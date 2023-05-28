@@ -3,7 +3,7 @@
  */
 public class Main {
     public static void main(String[] args) {
-
+        System.out.println(lengthOfLongestSubstring("pwwkew"));
         System.out.println(space2String("We are  happy."));
         }
 
@@ -31,8 +31,48 @@ public class Main {
                 array[size++] = c;
             }
         }
-        // 根据API文档，
-        String newStr = new String(array,0,size);
+        // new String()实际上是创建一个String类的对象newStr
+        // 根据API文档，array是字符数组，1是从array第几个字符开始创建对象newStr，size表示newStr的长度
+        String newStr = new String(array,1,size);
         return newStr;
+    }
+
+    /**
+     * Letcode 3
+     *
+     */
+    public static int lengthOfLongestSubstring(String s) {
+        int len = 1;
+        int maxLen = 0;
+        int left = 0;
+        int right = left + 1;
+        while (right < s.length()) {
+            if (s.length() == 1) {
+                return 1;
+            }else {
+                if (s.charAt(right) != s.charAt(left)) {
+                    right += 1;
+                    len += 1;
+                }else {
+                    if (len > maxLen){
+                        maxLen = len;
+                    }else {
+                        left += 1;
+                        right += 1;
+                    }
+                }
+            }
+        }
+        return maxLen;
+    }
+
+    /**
+     * 剑指offer 58
+     * @param s
+     * @param n
+     * @return
+     */
+    public static String reverseLeftWords(String s, int n) {
+
     }
 }
