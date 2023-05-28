@@ -3,6 +3,7 @@
  */
 public class Main {
     public static void main(String[] args) {
+        System.out.println(reverseLeftWords("pwwkew",2));
         System.out.println(lengthOfLongestSubstring("pwwkew"));
         System.out.println(space2String("We are  happy."));
         }
@@ -73,6 +74,29 @@ public class Main {
      * @return
      */
     public static String reverseLeftWords(String s, int n) {
+        int lenth = s.length();
+        char[] array1 = new char[lenth];
+        char[] array2 = new char[lenth];
 
+        for (int i = 0; i < n; i++) {
+            array1[i] = s.charAt(i);
+        }
+        for (int i = n; i < lenth ; i++) {
+            array2[i] = s.charAt(i);
+        }
+        String newStr1 = new String(array1,0,n);
+        String newStr2 = new String(array2,n,lenth-n);
+
+        return newStr2+newStr1;
+    }
+
+    /**
+     * 剑指offer 20
+     * @param s
+     * @return
+     */
+    public boolean isNumber(String s) {
+
+        return chechNumber;
     }
 }
