@@ -1,12 +1,62 @@
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 剑指offer刷题
  */
 public class Main {
     public static void main(String[] args) {
+        System.out.println(searchInsert(new int[] {1,3,5,6},7));
+        System.out.println(search(new int[] {-1, 0, 3, 5, 9, 12},3));
         System.out.println(reverseLeftWords("pwwkew",2));
         System.out.println(lengthOfLongestSubstring("pwwkew"));
         System.out.println(space2String("We are  happy."));
         }
+    /**
+     * 力扣 34
+     */
+    public static int[] searchRange(int[] nums, int target){
+        int[] startEnd = {-1,-1};
+
+
+    }
+    /**
+     * 力扣 35
+     */
+    public static int searchInsert(int[] nums, int target){
+        int left = 0;
+        int right = nums.length;
+        while (left < right){
+            int mid = left + ((right - left)>>1);
+            if (nums[mid]==target){
+                return mid;
+            } else if (nums[mid]<target) {
+                left = mid + 1;
+            }else {
+                right = mid;
+            }
+        }
+        return left;
+    }
+    /**
+     * 力扣 704
+     */
+    public static int search(int[] nums, int target){
+        int left = 0;
+        int right = nums.length;
+        while (left < right){
+            int mid = left + ((right - left)>>1);
+            if (nums[mid]==target){
+                return mid;
+            } else if (nums[mid]<target) {
+                left = mid + 1;
+            }else {
+                right = mid;
+            }
+        }
+        return -1;
+    }
 
     /**
      * 剑指offer 5
@@ -39,32 +89,30 @@ public class Main {
     }
 
     /**
-     * Letcode 3
-     *
+     * Letcode 3   无重复字符的最长子串，Hashmap，滑动窗口
+     * @param s
+     * @return
      */
     public static int lengthOfLongestSubstring(String s) {
-        int len = 1;
-        int maxLen = 0;
-        int left = 0;
-        int right = left + 1;
-        while (right < s.length()) {
-            if (s.length() == 1) {
-                return 1;
-            }else {
-                if (s.charAt(right) != s.charAt(left)) {
-                    right += 1;
-                    len += 1;
-                }else {
-                    if (len > maxLen){
-                        maxLen = len;
-                    }else {
-                        left += 1;
-                        right += 1;
-                    }
-                }
+        // 哈希集合，记录每个字符是否出现过
+        Set<Character> occ = new HashSet<Character>();
+        int n = s.length();
+        // 右指针，初始值为 -1，相当于我们在字符串的左边界的左侧，还没有开始移动
+        int rk = -1, ans = 0;
+        for (int i = 0; i < n; ++i) {
+            if (i != 0) {
+                // 左指针向右移动一格，移除一个字符
+                occ.remove(s.charAt(i - 1));
             }
+            while (rk + 1 < n && !occ.contains(s.charAt(rk + 1))) {
+                // 不断地移动右指针
+                occ.add(s.charAt(rk + 1));
+                ++rk;
+            }
+            // 第 i 到 rk 个字符是一个极长的无重复字符子串
+            ans = Math.max(ans, rk - i + 1);
         }
-        return maxLen;
+        return ans;
     }
 
     /**
@@ -75,6 +123,8 @@ public class Main {
      */
     public static String reverseLeftWords(String s, int n) {
         int lenth = s.length();
+
+        // 创建两个数组分别存储n之前的字符和n之后的字符
         char[] array1 = new char[lenth];
         char[] array2 = new char[lenth];
 
@@ -92,11 +142,14 @@ public class Main {
 
     /**
      * 剑指offer 20
+     * 解法：有效状态机，Hashmap学习
      * @param s
      * @return
      */
     public boolean isNumber(String s) {
-
+        boolean chechNumber = true;
         return chechNumber;
     }
+
+
 }
