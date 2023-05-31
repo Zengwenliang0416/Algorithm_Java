@@ -1,3 +1,4 @@
+import java.time.temporal.Temporal;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -7,20 +8,13 @@ import java.util.Set;
  */
 public class Main {
     public static void main(String[] args) {
+
         System.out.println(searchInsert(new int[] {1,3,5,6},7));
         System.out.println(search(new int[] {-1, 0, 3, 5, 9, 12},3));
         System.out.println(reverseLeftWords("pwwkew",2));
         System.out.println(lengthOfLongestSubstring("pwwkew"));
         System.out.println(space2String("We are  happy."));
         }
-    /**
-     * 力扣 34
-     */
-    public static int[] searchRange(int[] nums, int target){
-        int[] startEnd = {-1,-1};
-
-
-    }
     /**
      * 力扣 35
      */
@@ -44,15 +38,15 @@ public class Main {
      */
     public static int search(int[] nums, int target){
         int left = 0;
-        int right = nums.length;
-        while (left < right){
-            int mid = left + ((right - left)>>1);
+        int right = nums.length-1;
+        while (left <= right){
+            int mid = (left + right) >> 1;
             if (nums[mid]==target){
                 return mid;
             } else if (nums[mid]<target) {
                 left = mid + 1;
             }else {
-                right = mid;
+                right = mid-1;
             }
         }
         return -1;
