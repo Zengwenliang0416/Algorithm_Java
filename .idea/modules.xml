@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Algorithm.iml" filepath="$PROJECT_DIR$/Algorithm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ArraySummarys/ArraySummarys.iml" filepath="$PROJECT_DIR$/ArraySummarys/ArraySummarys.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HashMap/HashMap.iml" filepath="$PROJECT_DIR$/HashMap/HashMap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LinkList/LinkList.iml" filepath="$PROJECT_DIR$/LinkList/LinkList.iml" />
       <module fileurl="file://$PROJECT_DIR$/RemoveElements/RemoveElements.iml" filepath="$PROJECT_DIR$/RemoveElements/RemoveElements.iml" />
     </modules>
   </component>
